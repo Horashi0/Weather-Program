@@ -6,19 +6,14 @@ import requests
 API_key = ""
 
 # temperature conversion
-
-
 def kelvin_to_celsius(kelvin):
     celsius = kelvin - 273.15
     return round(celsius)
 
-# ip grabber
-
-
+# ip grabbers
 def get_ip():
     response = requests.get('https://api64.ipify.org?format=json').json()
     return response["ip"]
-
 
 def get_location():
     ip_address = get_ip()
@@ -31,10 +26,10 @@ def get_location():
     }
     return location_data
 
-
 # Choice, the information displayed on screen
 choice = input(
     "Hello would you like to input your location automatically?(1) or manually(2) ")
+
 # Automatically gets weather
 if choice.lower() == "1":
     city = get_location()["city"]
@@ -69,6 +64,7 @@ if choice.lower() == "1":
     print(f"General Weather in {city}: {clouds}")
     print(f"Sun rises in {city} at {sunrise_time} local time")
     print(f"Sun sets in {city} at {sunset_time} local")
+
 # Manually enter city
 if choice.lower() == "2":
     # city = info displayed on screen where the user enters the city
